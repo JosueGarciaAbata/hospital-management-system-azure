@@ -1,20 +1,13 @@
 server:
-  port: ${CONSULTING_PORT:8090}
+  port: ${CONSULTING_PORT}
   forward-headers-strategy: framework
 
 spring:
   application:
-    name:  ${CONSULTING_NAME}
-
-  # Configuración UTF-8 para evitar problemas de encoding
-  http:
-    encoding:
-      charset: UTF-8
-      enabled: true
-      force: true
+    name: ${CONSULTING_NAME}
 
   datasource:
-    url: jdbc:postgresql://${DB_HOSTNAME}:${DB_PORT}/${DB_NAME}?useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:postgresql://${DB_HOSTNAME}:${DB_PORT}/${DB_NAME}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
@@ -24,10 +17,6 @@ spring:
     hibernate:
       ddl-auto: validate
     show-sql: true
-    properties:
-      hibernate:
-        jdbc:
-          charset: utf8
 
 eureka:
   client:

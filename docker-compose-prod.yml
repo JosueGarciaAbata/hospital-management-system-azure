@@ -8,11 +8,11 @@ services:
       - ./.env
     restart: always
     environment:
-      POSTGRES_DB: ${DB_NAME}
-      POSTGRES_USER: ${DB_USERNAME}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: hospital_system
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
     ports:
-      - "5050:${DB_PORT}"
+      - "5050:5432"
     volumes:
       - hospital_data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -23,10 +23,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-auth-service
-    container_name: ${AUTH_NAME}
+    container_name: auth-service
     env_file: ./.env
     ports:
-      - "${AUTH_PORT}:${AUTH_PORT}"
+      - "8091:8091"
     networks:
       - hospital_network
     depends_on:
@@ -37,10 +37,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-admin-service
-    container_name: ${ADMIN_SERVICE_NAME}
+    container_name: admin-service
     env_file: ./.env
     ports:
-      - "${ADMIN_SERVICE_PORT}:${ADMIN_SERVICE_PORT}"
+      - "8090:8090"
     networks:
       - hospital_network
     depends_on:
@@ -51,10 +51,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-consulting-service
-    container_name: ${CONSULTING_NAME}
+    container_name: consulting-service
     env_file: ./.env
     ports:
-      - "${CONSULTING_PORT}:${CONSULTING_PORT}"
+      - "8092:8092"
     networks:
       - hospital_network
     depends_on:
@@ -65,10 +65,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-report-service
-    container_name: ${REPORTING_NAME}
+    container_name: reporting-service
     env_file: ./.env
     ports:
-      - "${REPORTING_PORT}:${REPORTING_PORT}"
+      - "8093:8093"
     networks:
       - hospital_network
     depends_on:
@@ -79,10 +79,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-hospital-eureka-server
-    container_name: ${EUREKA_NAME}
+    container_name: eureka-server
     env_file: ./.env
     ports:
-      - "${EUREKA_PORT}:${EUREKA_PORT}"
+      - "8761:8761"
     networks:
       - hospital_network
 
@@ -90,10 +90,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-hospital-gateway
-    container_name: ${GATEWAY_NAME}
+    container_name: gateway
     env_file: ./.env
     ports:
-      - "${GATEWAY_PORT}:${GATEWAY_PORT}"
+      - "8080:8080"
     networks:
       - hospital_network
     depends_on:

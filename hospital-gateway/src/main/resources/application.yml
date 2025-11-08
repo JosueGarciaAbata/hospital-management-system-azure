@@ -29,7 +29,7 @@ spring:
           predicates:
             - Path=/api/report/v3/api-docs
           filters:
-            - RewritePath=/api/report/(?<seg>v3/api-docs.*), /${seg}
+            - RewritePath=/api/reports/(?<seg>v3/api-docs.*), /${seg}
 
         # ====== TRÁFICO NORMAL (sin StripPrefix) ======
         - id: auth-service
@@ -74,4 +74,4 @@ springdoc:
       - name: admin-service
         url: /admin/v3/api-docs
       - name: reporting-service
-        url: /api/report/v3/api-docs   # <-- corregido (antes decía /reportes)
+        url: /api/reports/v3/api-docs # <-- corregido (antes decía /reportes)
