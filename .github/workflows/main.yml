@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - dev
 
 jobs:
   detect-and-build:
@@ -37,11 +36,10 @@ jobs:
           echo "Archivos modificados:"
           echo "$CHANGED_FILES"
 
-          SERVICES=("auth-service" "admin-service" "consulting-service" "report-service" "frontend")
+          SERVICES=("admin-service" "auth-service" "consulting-service" "hospital-eureka-server" "hospital-gateway" "report-service")
 
           for SERVICE in "${SERVICES[@]}"; do
             if echo "$CHANGED_FILES" | grep -q "^$SERVICE/"; then
-              echo "🟢 Se detectó cambio en: $SERVICE"
               IMAGE="${{ secrets.ACR_NAME }}.azurecr.io/${SERVICE}:${{ github.sha }}"
               echo "Construyendo imagen $IMAGE"
               docker build -t $IMAGE -f Dockerfile-$SERVICE .
