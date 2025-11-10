@@ -36,11 +36,6 @@ public class DoctorController {
     private final DoctorReadService readService;
     private final DoctorWriteService writeService;
 
-    @GetMapping("/test")
-    public String test() {
-        return "test";
-    }
-
     /* =========================
      *          READING
      * ========================= */

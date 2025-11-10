@@ -37,7 +37,7 @@ jobs:
           echo "Archivos modificados:"
           echo "$CHANGED_FILES"
 
-          SERVICES=("auth-service" "consulting-service" "report-service" "frontend")
+          SERVICES=("auth-service" "admin-service" "consulting-service" "report-service" "frontend")
 
           for SERVICE in "${SERVICES[@]}"; do
             if echo "$CHANGED_FILES" | grep -q "^$SERVICE/"; then

@@ -43,10 +43,6 @@ public class UserAndAuthController {
         return "ok";
     }
 
-    @GetMapping("/ok2")
-    public String testing() {
-        return "ok";
-    }
 
     /* =========================
      *          USERS
