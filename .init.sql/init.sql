@@ -174,7 +174,7 @@ INSERT INTO users (dni, email, password, gender, first_name, last_name, enabled,
 VALUES (
            '1500903685',
            'josuegarcab2@hotmail.com',
-           crypt('admin123', gen_salt('bf')),
+           md5('admin123'),
            'MALE',
            'System',
            'Admin',
@@ -187,7 +187,7 @@ INSERT INTO users (dni, email, password, gender, first_name, last_name, enabled,
 VALUES (
            '0912345678',
            'admin.guayaquil@example.com',
-           crypt('admin123', gen_salt('bf')),
+           md5('admin123'),
            'FEMALE',
            'System',
            'Admin',
@@ -200,7 +200,7 @@ INSERT INTO users (dni, email, password, gender, first_name, last_name, enabled,
 VALUES (
            '1712345678',
            'admin.ambato@example.com',
-           crypt('admin123', gen_salt('bf')),
+           md5('admin123'),
            'MALE',
            'System',
            'Admin',
@@ -215,15 +215,15 @@ INSERT INTO users_roles (user_id,    role_id) VALUES (3, 1);
 
 -- Insertar usuarios doctores (dni válidos EC)
 INSERT INTO users (dni, email, password, gender, first_name, last_name, enabled, center_id) VALUES
-                                                                                                ('1849488182','doctor@hotmail.com',crypt('doctor123',gen_salt('bf')),'MALE','Juan','Perez',TRUE,1),
-                                                                                                ('1552501056','martin.gomez@hospital.com',crypt('doctor123',gen_salt('bf')),'MALE','Martin','Gomez',TRUE,1),
-                                                                                                ('0820194900','valeria.silva@hospital.com',crypt('doctor123',gen_salt('bf')),'FEMALE','Valeria','Silva',TRUE,1),
-                                                                                                ('2335515249','ricardo.fuentes@hospital.com',crypt('doctor123',gen_salt('bf')),'MALE','Ricardo','Fuentes',TRUE,3),
-                                                                                                ('0227907425','laura.morales@hospital.com',crypt('doctor123',gen_salt('bf')),'FEMALE','Laura','Morales',TRUE,3),
-                                                                                                ('1509184485','javier.ortiz@hospital.com',crypt('doctor123',gen_salt('bf')),'MALE','Javier','Ortiz',FALSE,3),
-                                                                                                ('2002638654','carolina.mendez@hospital.com',crypt('doctor123',gen_salt('bf')),'FEMALE','Carolina','Mendez',FALSE,2),
-                                                                                                ('1617335060','sergio.ruiz@hospital.com',crypt('doctor123',gen_salt('bf')),'MALE','Sergio','Ruiz',FALSE,2),
-                                                                                                ('1209534963','andrea.castro@hospital.com',crypt('doctor123',gen_salt('bf')),'FEMALE','Andrea','Castro',FALSE,2);
+                                                                                                ('1849488182','doctor@hotmail.com',md5('doctor123'),'MALE','Juan','Perez',TRUE,1),
+                                                                                                ('1552501056','martin.gomez@hospital.com',md5('doctor123'),'MALE','Martin','Gomez',TRUE,1),
+                                                                                                ('0820194900','valeria.silva@hospital.com',md5('doctor123'),'FEMALE','Valeria','Silva',TRUE,1),
+                                                                                                ('2335515249','ricardo.fuentes@hospital.com',md5('doctor123'),'MALE','Ricardo','Fuentes',TRUE,3),
+                                                                                                ('0227907425','laura.morales@hospital.com',md5('doctor123'),'FEMALE','Laura','Morales',TRUE,3),
+                                                                                                ('1509184485','javier.ortiz@hospital.com',md5('doctor123'),'MALE','Javier','Ortiz',FALSE,3),
+                                                                                                ('2002638654','carolina.mendez@hospital.com',md5('doctor123'),'FEMALE','Carolina','Mendez',FALSE,2),
+                                                                                                ('1617335060','sergio.ruiz@hospital.com',md5('doctor123'),'MALE','Sergio','Ruiz',FALSE,2),
+                                                                                                ('1209534963','andrea.castro@hospital.com',md5('doctor123'),'FEMALE','Andrea','Castro',FALSE,2);
 
 -- Asignar rol DOCTOR (id=2) a todos estos usuarios
 INSERT INTO users_roles (user_id, role_id) SELECT id, 2 FROM users WHERE dni IN ('1849488182','1552501056','0820194900','2335515249','0227907425','1509184485','2002638654','1617335060','1209534963');

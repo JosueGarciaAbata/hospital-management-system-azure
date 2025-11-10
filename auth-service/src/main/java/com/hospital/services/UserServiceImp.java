@@ -239,4 +239,5 @@ public class UserServiceImp implements UserService {
             throw new DoctorAssignedException("El usuario tiene un doctor asignado y no se puede eliminar.");
         }
     }
+
 }
