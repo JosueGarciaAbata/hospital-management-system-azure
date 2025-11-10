@@ -44,7 +44,7 @@ jobs:
               echo "🟢 Se detectó cambio en: $SERVICE"
               IMAGE="${{ secrets.ACR_NAME }}.azurecr.io/${SERVICE}:${{ github.sha }}"
               echo "Construyendo imagen $IMAGE"
-              docker build -t $IMAGE Dockerfile-$SERVICE
+              docker build -t $IMAGE -f Dockerfile-$SERVICE .
               docker push $IMAGE
               echo "$SERVICE=$IMAGE" >> $GITHUB_OUTPUT
             else
