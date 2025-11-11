@@ -33,7 +33,7 @@ public class JwtValidationFilter implements GlobalFilter, Ordered {
             "/swagger-ui.html", "/swagger-ui/**",
             "/v3/api-docs", "/v3/api-docs/**", "/v3/api-docs/swagger-config",
             "/**/v3/api-docs", "/**/v3/api-docs/**",
-            "/auth/login", "/auth/request-reset", "/auth/reset-password"
+            "/auth/login", "/auth/request-reset", "/auth/reset-password", "/auth/health-test"
     );
 
     private boolean isPublic(String path) {
