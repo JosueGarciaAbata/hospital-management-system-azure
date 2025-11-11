@@ -38,7 +38,7 @@ public class UserAndAuthController {
     private final UserMapper mapper;
     private final PasswordResetService passwordResetService;
 
-    @GetMapping("/health")
+    @GetMapping("/health-test")
     public String health() {
         return "Ok";
     }
