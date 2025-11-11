@@ -44,6 +44,15 @@ jobs:
               echo "Construyendo imagen $IMAGE"
               docker build -t $IMAGE -f Dockerfile-$SERVICE .
               docker push $IMAGE
+            
+              echo "🌐 Actualizando Container App en Azure..."
+              az containerapp update \
+                --name $SERVICE \
+                --resource-group hospital-system \
+                --image $IMAGE \
+                --output none
+            
+              echo "✅ Despliegue completado para $SERVICE"
               echo "$SERVICE=$IMAGE" >> $GITHUB_OUTPUT
             else
               echo "⚪ Sin cambios en: $SERVICE"
